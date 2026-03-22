@@ -1,0 +1,11 @@
+<h1>🎬 <%= @movie.title %></h1>
+
+<p><strong>Genre:</strong> <%= @movie.genre %></p>
+<p><strong>Duration:</strong> <%= @movie.duration %> mins</p>
+<p><strong>Description:</strong> <%= @movie.description %></p>
+
+<%= link_to "Book Tickets 🎟️", new_movie_booking_path(@movie) %>
+
+<br><br>
+
+<%= link_to "Back to Movies", movies_path %>

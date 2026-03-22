@@ -1,0 +1,11 @@
+<h1>🎬 Now Showing</h1>
+
+<% @movies.each do |movie| %>
+  <div>
+    <h2><%= movie.title %></h2>
+    <p>Genre: <%= movie.genre %></p>
+    <p>Duration: <%= movie.duration %> mins</p>
+    <%= link_to "View Details", movie_path(movie) %>
+  </div>
+  <hr>
+<% end %>
