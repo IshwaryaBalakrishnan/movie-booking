@@ -1,26 +1,31 @@
-<h1>🎬 <%= @movie.title %></h1>
-
-<p><strong>Genre:</strong> <%= @movie.genre %></p>
-<p><strong>Duration:</strong> <%= @movie.duration %> mins</p>
-<p><strong>Description:</strong> <%= @movie.description %></p>
-
-<%= link_to "Book Tickets 🎟️", new_movie_booking_path(@movie) %>
-
-<br><br>
-
-<h2>Current Bookings</h2>
-
-<% if @movie.bookings.empty? %>
-  <p>No bookings yet.</p>
-<% else %>
-  <% @movie.bookings.each do |booking| %>
-    <div>
-      <p><strong>Name:</strong> <%= booking.name %></p>
-      <p><strong>Email:</strong> <%= booking.email %></p>
-      <p><strong>Seats:</strong> <%= booking.seats %></p>
-    </div>
-    <hr>
-  <% end %>
+<% if notice %>
+  <p style="color: #2ecc71; background: #16213e; padding: 10px; border-radius: 5px;">
+    <%= notice %>
+  </p>
 <% end %>
 
-<%= link_to "Back to Movies", movies_path %>
+<div class="movie-card">
+  <h1>🎬 <%= @movie.title %></h1>
+  <p>🎭 <strong>Genre:</strong> <%= @movie.genre %></p>
+  <p>⏱️ <strong>Duration:</strong> <%= @movie.duration %> mins</p>
+  <p>📝 <strong>Description:</strong> <%= @movie.description %></p>
+
+  <%= link_to "Book Tickets 🎟️", new_movie_booking_path(@movie) %>
+</div>
+
+<div class="movie-card">
+  <h2>📋 Current Bookings</h2>
+
+  <% if @movie.bookings.empty? %>
+    <p>No bookings yet.</p>
+  <% else %>
+    <% @movie.bookings.each do |booking| %>
+      <p>👤 <strong>Name:</strong> <%= booking.name %></p>
+      <p>📧 <strong>Email:</strong> <%= booking.email %></p>
+      <p>💺 <strong>Seats:</strong> <%= booking.seats %></p>
+      <hr>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "← Back to Movies", movies_path %>

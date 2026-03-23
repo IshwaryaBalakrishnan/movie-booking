@@ -1,11 +1,11 @@
 <h1>🎬 Now Showing</h1>
 
 <% @movies.each do |movie| %>
-  <div>
+  <div class="movie-card">
     <h2><%= movie.title %></h2>
-    <p>Genre: <%= movie.genre %></p>
-    <p>Duration: <%= movie.duration %> mins</p>
-    <%= link_to "View Details", movie_path(movie) %>
+    <p>🎭 Genre: <%= movie.genre %></p>
+    <p>⏱️ Duration: <%= movie.duration %> mins</p>
+    <p><%= movie.description %></p>
+    <%= link_to "View Details & Book 🎟️", movie_path(movie) %>
   </div>
-  <hr>
 <% end %>

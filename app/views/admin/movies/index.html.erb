@@ -1,6 +1,6 @@
 <h1>🎬 Admin - Manage Movies</h1>
 
-<%= link_to "Add New Movie", new_admin_movie_path %>
+<%= link_to "➕ Add New Movie", new_admin_movie_path %>
 
 <hr>
 
@@ -8,15 +8,17 @@
   <p>No movies yet. Add one!</p>
 <% else %>
   <% @movies.each do |movie| %>
-    <div>
+    <div class="movie-card">
       <h2><%= movie.title %></h2>
-      <p><strong>Genre:</strong> <%= movie.genre %></p>
-      <p><strong>Duration:</strong> <%= movie.duration %> mins</p>
-      <%= link_to "Edit", edit_admin_movie_path(movie) %>
-      |
-      <%= link_to "Delete", admin_movie_path(movie), 
-          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      <p>🎭 <strong>Genre:</strong> <%= movie.genre %></p>
+      <p>⏱️ <strong>Duration:</strong> <%= movie.duration %> mins</p>
+      <p>📝 <strong>Description:</strong> <%= movie.description %></p>
+      <%= link_to "✏️ Edit", edit_admin_movie_path(movie) %>
+      &nbsp;&nbsp;
+      <%= link_to "🗑️ Delete", admin_movie_path(movie),
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this movie?" } %>
     </div>
-    <hr>
   <% end %>
 <% end %>
+
+<hr>
