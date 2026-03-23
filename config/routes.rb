@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :movies
+    root "movies#index"
+  end
+
   resources :movies do
     resources :bookings, only: [:new, :create]
   end
+
   root "movies#index"
 end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

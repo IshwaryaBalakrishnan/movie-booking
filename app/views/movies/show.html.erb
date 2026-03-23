@@ -8,4 +8,19 @@
 
 <br><br>
 
+<h2>Current Bookings</h2>
+
+<% if @movie.bookings.empty? %>
+  <p>No bookings yet.</p>
+<% else %>
+  <% @movie.bookings.each do |booking| %>
+    <div>
+      <p><strong>Name:</strong> <%= booking.name %></p>
+      <p><strong>Email:</strong> <%= booking.email %></p>
+      <p><strong>Seats:</strong> <%= booking.seats %></p>
+    </div>
+    <hr>
+  <% end %>
+<% end %>
+
 <%= link_to "Back to Movies", movies_path %>

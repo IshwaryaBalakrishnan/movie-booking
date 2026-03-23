@@ -1,0 +1,41 @@
+<h1>✏️ Edit Movie</h1>
+
+<% if @movie.errors.any? %>
+  <div style="color:red; border: 1px solid red; padding: 10px;">
+    <h3>Please fix these errors:</h3>
+    <% @movie.errors.full_messages.each do |message| %>
+      <p><%= message %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_with model: [:admin, @movie], data: { turbo: false } do |form| %>
+  <p>
+    <%= form.label :title, "Movie Title" %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :genre, "Genre" %><br>
+    <%= form.text_field :genre %>
+  </p>
+
+  <p>
+    <%= form.label :duration, "Duration (mins)" %><br>
+    <%= form.number_field :duration, min: 1 %>
+  </p>
+
+  <p>
+    <%= form.label :description, "Description" %><br>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.label :image_url, "Image URL" %><br>
+    <%= form.text_field :image_url %>
+  </p>
+
+  <%= form.submit "Update Movie ✅" %>
+<% end %>
+
+<%= link_to "Back to Movies", admin_movies_path %>

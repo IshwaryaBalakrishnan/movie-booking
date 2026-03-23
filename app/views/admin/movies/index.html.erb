@@ -1,0 +1,22 @@
+<h1>🎬 Admin - Manage Movies</h1>
+
+<%= link_to "Add New Movie", new_admin_movie_path %>
+
+<hr>
+
+<% if @movies.empty? %>
+  <p>No movies yet. Add one!</p>
+<% else %>
+  <% @movies.each do |movie| %>
+    <div>
+      <h2><%= movie.title %></h2>
+      <p><strong>Genre:</strong> <%= movie.genre %></p>
+      <p><strong>Duration:</strong> <%= movie.duration %> mins</p>
+      <%= link_to "Edit", edit_admin_movie_path(movie) %>
+      |
+      <%= link_to "Delete", admin_movie_path(movie), 
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    </div>
+    <hr>
+  <% end %>
+<% end %>
